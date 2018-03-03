@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style>
+		.box
+		{
+			width:100px;
+			height:100px;
+			border:1px solid red;
+		}
+		.box1
+		{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			transition-property:width height;
+			transition-duration: 1s;
+			transition-timing-function: ease-in-out;
+		}
+	</style>
+
+</head>
+<body>
+
+<div class="box" id='bigbox'></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+	function Transition()
+	{
+		var that		= this;
+		var timeID;
+		this.construct = function()
+		{
+			//setTimeout(this.activeTransition(),3000); 错误的直接调用了这个this.activeTransition的方法而没有等3000毫秒
+			//window.setTimeout(this.activeTransition, 3000);// is same to setTimeout(this.activeTransition, 3000);
+			setTimeout(this.activeTransition, 1000);
+		}
+
+		this.activeTransition=function()
+		{
+			$('#bigbox').removeClass('box').addClass('box1');
+		}
+	
+	}
+	$(function(){
+		
+		var tranObject = new Transition();
+		tranObject.construct();
+	});
+		
+
+
+
+</script>
+
+</body>
+</html>
